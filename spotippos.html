@@ -7,12 +7,41 @@
   <title>Document</title>
 </head>
 <style media="screen">
-  #field{
+  body {
+    margin: 0;
+  }
+  #field {
     font-size: 40px;
     text-align: center;
     line-height: 500px;
     color: #897277;
+    position: relative;
+    width: 1400px;
+    height: 1000px;
   }
+  div {
+    position: absolute;
+    opacity: 0.9;
+  }
+  #Gode {
+    background-color: #ffc273;
+  }
+  #Ruja {
+    background-color: #F19290;
+  }
+  #Jaby {
+    background-color: #AAEC80;
+  }
+  #Scavy {
+    background-color: #88E0EB;
+  }
+  #Groola {
+    background-color: #D9ACE1;
+  }
+  #Nova {
+    background-color: #FDDC8C;
+  }
+
 </style>
 <body>
   <div id="field"></div>
@@ -20,27 +49,20 @@
   <script src="jsonSpotippos.js"></script>
   <script type="text/javascript">
 
-    function createElement(id, bgColor, width, height, left, bottom, opacity) {
+    function createElement(id, width, height, left, bottom) {
       var div = document.createElement("div"),
           field = document.getElementById("field");
 
       div.id = id;
       div.innerHTML = id;
-      div.style.backgroundColor = bgColor;
       div.style.width = width;
       div.style.height = height;
-      div.style.position = "absolute";
       div.style.left = left;
       div.style.bottom = bottom;
-      div.style.opacity = opacity;
       field.appendChild(div);
-      field.style.position = "relative";
-      field.style.height = "1000px";
-      field.style.width = "1400px";
     }
 
     function dadosJson() {
-      var colors = {Gode: "#ffc273",Ruja:"#F19290", Jaby: "#AAEC80",Scavy: "#88E0EB",Groola: "#D9ACE1",Nova: "#FDDC8C"};
       for (var i in jsonTeste) {
         var name = i,
             upperX = jsonTeste[i].boundaries.bottomRight.x,
@@ -52,7 +74,7 @@
             left = jsonTeste[i].boundaries.upperLeft.x + "px",
             bottom = jsonTeste[i].boundaries.bottomRight.y + "px";
 
-        createElement(name,colors[name], width, height, left, bottom, 0.9);
+        createElement(name, width, height, left, bottom);
       }
     }
     dadosJson();
